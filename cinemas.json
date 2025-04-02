@@ -1,0 +1,206 @@
+{
+    "Centerplex": {
+        "Movies": [
+            "High School Musical",
+            "De Volta Para O Futuro",
+            "Elvis"
+        ],
+        "seat": {
+            "High School Musical": {
+                "A1": "reservado",
+                "A2": "disponível",
+                "A3": "disponível",
+                "A4": "disponível",
+                "A5": "disponível",
+                "A6": "disponível",
+                "A7": "disponível",
+                "A8": "disponível",
+                "A9": "disponível",
+                "A10": "disponível",
+                "A11": "disponível",
+                "A12": "disponível"
+            },
+            "De Volta Para O Futuro": {
+                "B1": "disponível",
+                "B2": "disponível",
+                "B3": "disponível",
+                "B4": "disponível",
+                "B5": "disponível",
+                "B6": "disponível",
+                "B7": "disponível",
+                "B8": "disponível",
+                "B9": "disponível",
+                "B10": "disponível",
+                "B11": "disponível",
+                "B12": "disponível"
+            },
+            "Elvis": {
+                "C1": "disponível",
+                "C2": "disponível",
+                "C3": "disponível",
+                "C4": "disponível",
+                "C5": "disponível",
+                "C6": "disponível",
+                "C7": "disponível",
+                "C8": "disponível",
+                "C9": "disponível",
+                "C10": "disponível",
+                "C11": "disponível",
+                "C12": "disponível"
+            }
+        },
+        "schedule": {
+            "High School Musical": [
+                "14:00",
+                "16:30",
+                "19:00"
+            ],
+            "De Volta Para O Futuro": [
+                "15:00",
+                "18:00",
+                "21:00"
+            ],
+            "Elvis": [
+                "13:30",
+                "17:00",
+                "20:30"
+            ]
+        }
+    },
+    "Cinesystem": {
+        "Movies": [
+            "High School Musical",
+            "Mamma Mia",
+            "Grease"
+        ],
+        "seat": {
+            "High School Musical": {
+                "A1": "disponível",
+                "A2": "disponível",
+                "A3": "disponível",
+                "A4": "disponível",
+                "A5": "disponível",
+                "A6": "disponível",
+                "A7": "disponível",
+                "A8": "disponível",
+                "A9": "disponível",
+                "A10": "disponível",
+                "A11": "disponível",
+                "A12": "disponível"
+            },
+            "Mamma Mia": {
+                "B1": "disponível",
+                "B2": "disponível",
+                "B3": "disponível",
+                "B4": "disponível",
+                "B5": "disponível",
+                "B6": "disponível",
+                "B7": "disponível",
+                "B8": "disponível",
+                "B9": "disponível",
+                "B10": "disponível",
+                "B11": "disponível",
+                "B12": "disponível"
+            },
+            "Grease": {
+                "C1": "disponível",
+                "C2": "disponível",
+                "C3": "disponível",
+                "C4": "disponível",
+                "C5": "disponível",
+                "C6": "disponível",
+                "C7": "disponível",
+                "C8": "disponível",
+                "C9": "disponível",
+                "C10": "disponível",
+                "C11": "disponível",
+                "C12": "disponível"
+            }
+        },
+        "schedule": {
+            "High School Musical": [
+                "13:00",
+                "15:30",
+                "18:00"
+            ],
+            "Mamma Mia": [
+                "14:30",
+                "17:30",
+                "20:00"
+            ],
+            "Grease": [
+                "16:00",
+                "19:30",
+                "22:00"
+            ]
+        }
+    },
+    "Kinoplex": {
+        "Movies": [
+            "Elvis",
+            "O Rei Do Show",
+            "Mamma Mia"
+        ],
+        "seat": {
+            "Elvis": {
+                "A1": "disponível",
+                "A2": "disponível",
+                "A3": "disponível",
+                "A4": "disponível",
+                "A5": "disponível",
+                "A6": "disponível",
+                "A7": "disponível",
+                "A8": "disponível",
+                "A9": "disponível",
+                "A10": "disponível",
+                "A11": "disponível",
+                "A12": "disponível"
+            },
+            "O Rei Do Show": {
+                "B1": "disponível",
+                "B2": "disponível",
+                "B3": "disponível",
+                "B4": "disponível",
+                "B5": "disponível",
+                "B6": "disponível",
+                "B7": "disponível",
+                "B8": "disponível",
+                "B9": "disponível",
+                "B10": "disponível",
+                "B11": "disponível",
+                "B12": "disponível"
+            },
+            "Mamma Mia": {
+                "C1": "disponível",
+                "C2": "disponível",
+                "C3": "disponível",
+                "C4": "disponível",
+                "C5": "disponível",
+                "C6": "disponível",
+                "C7": "disponível",
+                "C8": "disponível",
+                "C9": "disponível",
+                "C10": "disponível",
+                "C11": "disponível",
+                "C12": "disponível"
+            }
+        },
+        "schedule": {
+            "Elvis": [
+                "12:30",
+                "16:00",
+                "23:20"
+            ],
+            "O Rei Do Show": [
+                "14:00",
+                "17:30",
+                "21:00"
+            ],
+            "Mamma Mia": [
+                "15:30",
+                "18:30",
+                "23:00"
+            ]
+        }
+    }
+}

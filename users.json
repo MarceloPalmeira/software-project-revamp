@@ -1,0 +1,66 @@
+{
+    "gomes": {
+        "name": "Marco",
+        "password": "123",
+        "history": [
+            {
+                "Ticket": "664f0d08",
+                "Cinema": "Kinoplex",
+                "Filme": "Mamma Mia",
+                "Cadeiras": [
+                    "C11"
+                ],
+                "Horario_filme": "23:00",
+                "Horario_compra": "22:47:15 05-03-2025"
+            },
+            {
+                "Ticket": "1f045acb",
+                "Cinema": "Cinesystem",
+                "Filme": "Grease",
+                "Cadeiras": [
+                    "C1",
+                    "C2"
+                ],
+                "Horario_filme": "19:30",
+                "Horario_compra": "15:49:16 06-03-2025"
+            },
+            {
+                "Ticket": "9e6dcfc6",
+                "Cinema": "Cinesystem",
+                "Filme": "High School Musical",
+                "Cadeiras": [
+                    "A2"
+                ],
+                "Horario_filme": "15:30",
+                "Horario_compra": "15:49:51 06-03-2025"
+            },
+            {
+                "Ticket": "edd1dd9c",
+                "Cinema": "Centerplex",
+                "Filme": "High School Musical",
+                "Cadeiras": [
+                    "A1"
+                ],
+                "Horario_filme": "19:00",
+                "Horario_compra": "19:07:31 06-03-2025"
+            }
+        ]
+    },
+    "marcelopalmeira2004@hotmail.com": {
+        "name": "Marcílio",
+        "password": "12345",
+        "history": [
+            {
+                "Ticket": "2cb5767a",
+                "Cinema": "Centerplex",
+                "Filme": "High School Musical",
+                "Cadeiras": [
+                    "A1"
+                ],
+                "Horario_filme": "14:00",
+                "Horario_compra": "09:55:18 02-04-2025",
+                "QR Code": "ingressos/2cb5767a.png"
+            }
+        ]
+    }
+}
