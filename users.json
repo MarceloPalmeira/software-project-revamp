@@ -62,5 +62,22 @@
                 "QR Code": "ingressos/2cb5767a.png"
             }
         ]
+    },
+    "mpf@ic.ufal.br": {
+        "name": "Marcelo",
+        "password": "123",
+        "history": [
+            {
+                "Ticket": "306d60ea",
+                "Cinema": "Kinoplex",
+                "Filme": "Elvis",
+                "Cadeiras": [
+                    "A1"
+                ],
+                "Horario_filme": "23:20",
+                "Horario_compra": "22:40:51 08-04-2025",
+                "QR Code": "ingressos/306d60ea.png"
+            }
+        ]
     }
 }
