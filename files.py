@@ -1,6 +1,5 @@
 import json
-
-
+#Futuramente, quando eu precisar lidar com diferentes tipos de arquivos, será interessante adicionar um Creational Design Pattern aqui!
 class FileManager:
     def __init__(self, file_path):
         self.file_path = file_path
