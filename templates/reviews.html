@@ -1,0 +1,8 @@
+<h2>Avaliações para {{ filme }}</h2>
+{% for review in avaliacoes %}
+  <p><strong>{{ review.usuario }}</strong>: {{ review.rating }}/10<br>{{ review.review }}</p>
+  <hr>
+{% else %}
+  <p>Nenhuma avaliação encontrada.</p>
+{% endfor %}
+<a href="/menu">Voltar</a>

@@ -43,6 +43,13 @@
                 "rating": 10
             }
         ],
-        "O Rei Do Show": []
+        "O Rei Do Show": [],
+        "Minha vida": [
+            {
+                "usuario": "Bida",
+                "review": "11",
+                "rating": 0.5
+            }
+        ]
     }
 }

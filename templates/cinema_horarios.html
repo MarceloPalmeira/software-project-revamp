@@ -1,0 +1,11 @@
+<h2>Horários disponíveis para {{ filme }}</h2>
+
+<form method="post" action="/cinemas/assentos">
+  <input type="hidden" name="cinema" value="{{ cinema }}">
+  <input type="hidden" name="filme" value="{{ filme }}">
+  {% for hora in horarios %}
+    <button name="horario" value="{{ hora }}">{{ loop.index }} - {{ hora }}</button><br>
+  {% endfor %}
+</form>
+
+<a href="/cinemas">Voltar</a>

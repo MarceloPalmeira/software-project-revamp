@@ -1,0 +1,31 @@
+<h2>Assentos disponíveis para {{ filme }}</h2>
+
+<form method="post" action="/cinemas/pagamento">
+  <input type="hidden" name="cinema" value="{{ cinema }}">
+  <input type="hidden" name="filme" value="{{ filme }}">
+  <input type="hidden" name="horario" value="{{ horario }}">
+
+  <p>X → Indisponível</p>
+  <label>Escolha seu assento:</label><br>
+
+  {% for cadeira, status in assentos.items() %}
+    {% if status == "disponível" %}
+      <input type="radio" name="assento" value="{{ cadeira }}" required> {{ cadeira }}
+    {% else %}
+      <span style="color: red;">[X]</span> {{ cadeira }}
+    {% endif %}
+  {% endfor %}
+
+  <br><br>
+  Cupom: <input type="text" name="cupom"><br>
+  Método de pagamento:
+  <select name="metodo">
+    <option value="cartao">Cartão</option>
+    <option value="dinheiro">Dinheiro</option>
+    <option value="pix">PIX</option>
+  </select><br><br>
+
+  <button type="submit">Finalizar reserva</button>
+</form>
+
+<a href="/menu">Cancelar</a>

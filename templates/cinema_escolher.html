@@ -1,0 +1,10 @@
+<h2>Qual cinema você gostaria de ir?</h2>
+<p>Use o cupom <strong>10CONTO</strong> para 10% de desconto!</p>
+
+<form method="post" action="/cinemas/filmes">
+  {% for nome in cinemas %}
+    <button name="cinema" value="{{ nome }}">{{ loop.index }} - {{ nome }}</button><br>
+  {% endfor %}
+</form>
+
+<a href="/menu">Voltar</a>

@@ -1,0 +1,33 @@
+<h2>Perfil do Usuário</h2>
+<form method="post">
+  <input type="hidden" name="email" value="{{ email }}">
+  <button name="acao" value="ver">[1] Ver dados</button><br><br>
+
+  Nova senha: <input type="password" name="nova_senha">
+  <button name="acao" value="senha">[2] Alterar senha</button><br><br>
+
+  <button name="acao" value="historico">[3] Ver histórico</button><br><br>
+
+  Cancelar reserva (código): <input type="text" name="cancelar">
+  <button name="acao" value="cancelar">[4] Cancelar</button><br><br>
+</form>
+
+{% if dados %}
+  <p><strong>Nome:</strong> {{ dados.name }}<br>
+     <strong>Email:</strong> {{ dados.email }}</p>
+{% endif %}
+
+{% if historico %}
+  <h3>Histórico de Reservas:</h3>
+  {% for item in historico %}
+    <p><strong>Filme:</strong> {{ item.Filme }}<br>
+       <strong>Cinema:</strong> {{ item.Cinema }}<br>
+       <strong>Assento:</strong> {{ item.Cadeiras | join(', ') }}<br>
+       <strong>Código:</strong> {{ item.Ticket }}</p>
+    <hr>
+  {% endfor %}
+{% endif %}
+
+{% if msg %}
+  <p style="color: green;">{{ msg }}</p>
+{% endif %}

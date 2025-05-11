@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>iCinema - Início</title>
+</head>
+<body>
+    <h1>🎬 iCinema</h1>
+    {% if user %}
+        <p>Olá, {{ user.name }}!</p>
+        <a href="/menu">Ir para o Menu</a> |
+        <a href="/logout">Sair</a>
+    {% else %}
+        <a href="/login">Login</a> |
+        <a href="/cadastro">Criar Conta</a>
+    {% endif %}
+</body>
+</html>
