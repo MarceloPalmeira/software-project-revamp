@@ -5,10 +5,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
-from managers.auth_manager import AuthManager
-from managers.cinema_manager import CinemaManager
-from managers.review_manager import ReviewManager
-from models.review import ReviewNota
+from facade.sistema_facade import SistemaFacade
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -18,11 +15,13 @@ app.add_middleware(SessionMiddleware, secret_key="umasecretmuitosegura123")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
+sistema = SistemaFacade()
+
 # Home
 @app.get("/")
 def home(request: Request):
     email = request.session.get("user_email")
-    user = AuthManager().get_account(email) if email else None
+    user = sistema.obter_usuario(email) if email else None
     return templates.TemplateResponse("home.html", {"request": request, "user": user})
 
 
@@ -33,8 +32,7 @@ def login_form(request: Request):
 
 @app.post("/login")
 def login(request: Request, email: str = Form(...), password: str = Form(...)):
-    auth = AuthManager()
-    user = auth.login(email, password)
+    user = sistema.login(email, password)
     if user:
         request.session["user_email"] = email
         return RedirectResponse(url="/menu", status_code=302)
@@ -52,8 +50,7 @@ def cadastro_form(request: Request):
 
 @app.post("/cadastro")
 def cadastro(request: Request, nome: str = Form(...), email: str = Form(...), senha: str = Form(...)):
-    auth = AuthManager()
-    sucesso, msg = auth.create_account(nome, email, senha)
+    sucesso, msg = sistema.criar_conta(nome, email, senha)
     if sucesso:
         return RedirectResponse(url="/login", status_code=302)
     return templates.TemplateResponse("cadastro.html", {"request": request, "erro": msg})
@@ -62,8 +59,7 @@ def cadastro(request: Request, nome: str = Form(...), email: str = Form(...), se
 # Menu
 @app.get("/menu")
 def menu(request: Request):
-    email = request.session.get("user_email")
-    if not email:
+    if not request.session.get("user_email"):
         return RedirectResponse(url="/login", status_code=302)
     return templates.TemplateResponse("menu.html", {"request": request})
 
@@ -74,42 +70,31 @@ def escolher_cinema(request: Request):
     email = request.session.get("user_email")
     if not email:
         return RedirectResponse(url="/login", status_code=302)
-    user = AuthManager().get_account(email)
-    cinema_mgr = CinemaManager(user)
-    return templates.TemplateResponse("cinema_escolher.html", {
-        "request": request,
-        "cinemas": cinema_mgr.listar_cinemas()
-    })
+    user = sistema.obter_usuario(email)
+    cinemas = sistema.listar_cinemas(user)
+    return templates.TemplateResponse("cinema_escolher.html", {"request": request, "cinemas": cinemas})
 
 @app.post("/cinemas/filmes")
 def escolher_filme(request: Request, cinema: str = Form(...)):
     email = request.session.get("user_email")
-    user = AuthManager().get_account(email)
-    cinema_mgr = CinemaManager(user)
-    filmes = cinema_mgr.listar_filmes(cinema)
-    return templates.TemplateResponse("cinema_filmes.html", {
-        "request": request, "cinema": cinema, "filmes": filmes
-    })
+    user = sistema.obter_usuario(email)
+    filmes = sistema.listar_filmes(user, cinema)
+    return templates.TemplateResponse("cinema_filmes.html", {"request": request, "cinema": cinema, "filmes": filmes})
 
 @app.post("/cinemas/horarios")
 def escolher_horario(request: Request, cinema: str = Form(...), filme: str = Form(...)):
     email = request.session.get("user_email")
-    user = AuthManager().get_account(email)
-    cinema_mgr = CinemaManager(user)
-    horarios = cinema_mgr.listar_horarios(cinema, filme)
-    return templates.TemplateResponse("cinema_horarios.html", {
-        "request": request, "cinema": cinema, "filme": filme, "horarios": horarios
-    })
+    user = sistema.obter_usuario(email)
+    horarios = sistema.listar_horarios(user, cinema, filme)
+    return templates.TemplateResponse("cinema_horarios.html", {"request": request, "cinema": cinema, "filme": filme, "horarios": horarios})
 
 @app.post("/cinemas/assentos")
 def escolher_assentos(request: Request, cinema: str = Form(...), filme: str = Form(...), horario: str = Form(...)):
     email = request.session.get("user_email")
-    user = AuthManager().get_account(email)
-    cinema_mgr = CinemaManager(user)
-    assentos = cinema_mgr.listar_assentos(cinema, filme)
+    user = sistema.obter_usuario(email)
+    assentos = sistema.listar_assentos(user, cinema, filme)
     return templates.TemplateResponse("cinema_assentos.html", {
-        "request": request, "cinema": cinema, "filme": filme, "horario": horario,
-        "assentos": assentos
+        "request": request, "cinema": cinema, "filme": filme, "horario": horario, "assentos": assentos
     })
 
 @app.post("/cinemas/pagamento")
@@ -123,9 +108,8 @@ def finalizar_reserva(
     metodo: str = Form(...)
 ):
     email = request.session.get("user_email")
-    user = AuthManager().get_account(email)
-    cinema_mgr = CinemaManager(user)
-    sucesso, mensagem = cinema_mgr.reservar_assento(cinema, filme, horario, assento, cupom, metodo)
+    user = sistema.obter_usuario(email)
+    sucesso, mensagem = sistema.reservar(user, cinema, filme, horario, assento, cupom, metodo)
     return templates.TemplateResponse("resumo.html", {"request": request, "mensagem": mensagem})
 
 
@@ -148,18 +132,18 @@ def perfil_acao(
     if not email:
         return RedirectResponse(url="/login", status_code=302)
 
-    auth = AuthManager()
-    user = auth.get_account(email)
+    user = sistema.obter_usuario(email)
     msg = ""
+
     if acao == "ver":
         return templates.TemplateResponse("perfil.html", {"request": request, "dados": user, "email": email})
     elif acao == "senha":
-        msg = auth.update_password(email, nova_senha)
+        msg = sistema.alterar_senha(email, nova_senha)
     elif acao == "historico":
         return templates.TemplateResponse("perfil.html", {"request": request, "historico": user.history, "email": email})
     elif acao == "cancelar":
         user.remove_history_by_code(cancelar)
-        auth.update_history(user)
+        sistema.obter_usuario(email)  # Reatualizar (se precisar salvar)
         msg = "Reserva cancelada com sucesso."
     return templates.TemplateResponse("perfil.html", {"request": request, "msg": msg, "email": email})
 
@@ -174,17 +158,14 @@ def avaliar(request: Request, filme: str = Form(...), nota: float = Form(...), c
     email = request.session.get("user_email")
     if not email:
         return RedirectResponse(url="/login", status_code=302)
-    review_mgr = ReviewManager()
-    review = ReviewNota(usuario=email, filme=filme, texto=comentario, nota=nota)
-    review_mgr.submit(review)
+    sistema.avaliar(email, filme, nota, comentario)
     return templates.TemplateResponse("resumo.html", {"request": request, "mensagem": "Obrigado pela sua avaliação!"})
 
 
 # Ver avaliações
 @app.get("/reviews")
 def ver_reviews(request: Request, filme: str = ""):
-    review_mgr = ReviewManager()
     if filme:
-        avaliacoes = review_mgr.listar(filme)
+        avaliacoes = sistema.listar_reviews(filme)
         return templates.TemplateResponse("reviews.html", {"request": request, "filme": filme, "avaliacoes": avaliacoes})
     return templates.TemplateResponse("reviews_buscar.html", {"request": request})

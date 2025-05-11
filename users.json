@@ -136,6 +136,30 @@
                 "Horario_compra": "agora",
                 "Valor": "R$18.00",
                 "Método": "cartao"
+            },
+            {
+                "Ticket": "bid_A5",
+                "Cinema": "Centerplex",
+                "Filme": "High School Musical",
+                "Cadeiras": [
+                    "A5"
+                ],
+                "Horario_filme": "14:00",
+                "Horario_compra": "agora",
+                "Valor": "R$18.00",
+                "Método": "pix"
+            },
+            {
+                "Ticket": "bid_C1",
+                "Cinema": "Centerplex",
+                "Filme": "Elvis",
+                "Cadeiras": [
+                    "C1"
+                ],
+                "Horario_filme": "20:30",
+                "Horario_compra": "agora",
+                "Valor": "R$20.00",
+                "Método": "cartao"
             }
         ]
     }

@@ -2,6 +2,7 @@ from database.files import FileManager
 from models.pagamento import CartaoPayment, PixPayment, DinheiroPayment
 from ingressos.ingressos import IngressoManager
 from models.user import Account
+from models.payment_factory import PaymentFactory
 
 class CinemaManager:
     def __init__(self, user: Account):
@@ -39,14 +40,7 @@ class CinemaManager:
             total *= 0.9
 
         # Processar pagamento com polimorfismo
-        if metodo == "cartao":
-            pagamento = CartaoPayment(total, tipo="crédito")
-            pagamento.preencher_dados("Nome Teste", "0000000000000000", "12/29", "123")
-        elif metodo == "dinheiro":
-            pagamento = DinheiroPayment(total)
-        else:
-            pagamento = PixPayment(total)
-
+        pagamento = PaymentFactory.create(metodo, total)
         confirmacao = pagamento.processar_pagamento()
 
         # Criar ingresso
