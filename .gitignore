@@ -1,5 +1,4 @@
 # Ignorar arquivos __pycache__
-__pycache__/
 
 # Ignorar o diretório ingressos
 ingressos/

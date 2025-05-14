@@ -77,6 +77,42 @@
                 "Horario_filme": "23:20",
                 "Horario_compra": "22:40:51 08-04-2025",
                 "QR Code": "ingressos/306d60ea.png"
+            },
+            {
+                "Ticket": "mpf_A6",
+                "Cinema": "Centerplex",
+                "Filme": "High School Musical",
+                "Cadeiras": [
+                    "A6"
+                ],
+                "Horario_filme": "14:00",
+                "Horario_compra": "agora",
+                "Valor": "R$18.00",
+                "Método": "dinheiro"
+            },
+            {
+                "Ticket": "mpf_A7",
+                "Cinema": "Centerplex",
+                "Filme": "High School Musical",
+                "Cadeiras": [
+                    "A7"
+                ],
+                "Horario_filme": "14:00",
+                "Horario_compra": "agora",
+                "Valor": "R$18.00",
+                "Método": "pix"
+            },
+            {
+                "Ticket": "mpf_A8",
+                "Cinema": "Centerplex",
+                "Filme": "High School Musical",
+                "Cadeiras": [
+                    "A8"
+                ],
+                "Horario_filme": "14:00",
+                "Horario_compra": "agora",
+                "Valor": "R$20.00",
+                "Método": "cartao"
             }
         ]
     },
