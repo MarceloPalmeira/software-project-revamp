@@ -1,4 +1,21 @@
-# Ignorar arquivos __pycache__
 
-# Ignorar o diretório ingressos
-ingressos/
+__pycache__/
+*.py[cod]
+*.pyo
+
+ingressos/*.png
+
+.env
+
+*.log
+*.swp
+*.DS_Store
+.vscode/
+.idea/
+
+*.egg-info/
+dist/
+build/
+
+!public/.gitkeep
+!templates/.gitkeep
