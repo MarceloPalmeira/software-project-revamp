@@ -11,7 +11,10 @@ Welcome to **iCinema**, a cinema management system developed to simplify ticket 
 
 ```bash
 pip install -r requirements.txt
- Create an account using **GMAIL ONLY** for proper email functionality  
+```
+ 
+- A `users.json` file to store user data (it will be created automatically if it doesn't exist)  
+- Create an account using **GMAIL ONLY** for proper email functionality  
 
 ---
 
